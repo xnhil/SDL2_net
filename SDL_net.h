@@ -364,6 +364,11 @@ extern DECLSPEC const char * SDLCALL SDLNet_GetError(void);
 /* Inline functions to read/write network data                         */
 /***********************************************************************/
 
+/* Emscripten requires aligned data */
+#ifdef EMSCRIPTEN
+#define SDL_DATA_ALIGNED    1
+#endif
+
 /* Warning, some systems have data access alignment restrictions */
 #if defined(sparc) || defined(mips) || defined(__arm__)
 #define SDL_DATA_ALIGNED    1

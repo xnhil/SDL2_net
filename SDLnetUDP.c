@@ -486,6 +486,10 @@ foundit:
         else
         {
             packet->len = 0;
+            if( SDLNet_GetLastError() != EINTR )
+            {
+                break;
+            }
         }
     }
 
